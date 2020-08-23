@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Blog</title>
+</head>
+<body class="bg-secondary">
+    
+  <%- include('nav') %>
+
+  <div class="container">
+    <% articles.forEach(article => { %>
+      <div class="card mt-4">
+        <div class="card-body">
+          <h4 class="card-title"><%= article.title %></h4>
+          <div class="card-subtitle text-muted mb-2">
+            <%= article.createdAt.toLocaleDateString() %>
+          </div>
+          <div class="card-text mb-2"><%= article.description %></div>
+          <a href="/article/view/<%= article.slug %>" class="btn btn-outline-primary my-2 my-sm-0 mr-1">Read</a>
+          <% if (user.requestedPage === 'posts') { %>        
+            <a href="/article/edit/<%= article.slug %>" class="btn btn-outline-secondary my-2 my-sm-0 mr-1">Edit</a>
+            <form action="/article/delete/<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
+              <button type="submit" class="btn btn-outline-danger my-2 my-sm-0">Delete</button>
+            </form>
+          <% } %>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+</body>
+</html>
+

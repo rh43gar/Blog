@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>sign up</title>
+</head>
+    <body>
+        <%- include('nav') %>
+        <div class="container">
+            <div class="col-md-4 offset-md-4 mt-5">
+                <h1>SIGN UP</h1>
+                <%- include('messages.ejs') %>
+                <form action="/account/signup" method="POST">
+                    <div class="form-group mt-4 ">
+                      <label for="username" class="h4">Username</label>
+                      <input type="text" class="form-control col-xs-4" name="username" id="username" required>
+                    </div>
+                    <div class="form-group mt-4">
+                      <label for="email" class="h4">Email</label>
+                      <input type="email" class="form-control col-xs-4" name="email" id="email" required>
+                    </div>
+                    <div class="form-group mt-4">
+                        <label for="password" class="h4">Password</label>
+                        <input type="password" class="form-control col-xs-4" name="password" id="password" required>
+                      </div>
+                    <div>
+                        <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">sign up</button>
+                    </div>
+                    <div class="mt-4">
+                        <p class="h6">Already have an account? <a href="/account/login">login</a></p>
+                    </div>
+                </form>
+            </div>          
+        </div>  
+    </body>
+</html>
